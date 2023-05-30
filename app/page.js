@@ -1,113 +1,228 @@
-import Image from 'next/image'
+import Image from "next/image";
+import Iframe from "react-iframe";
+import Ubication from "./components/Ubication";
+import Counter from "./components/Counter";
+import { CarouselProjects } from "./components/CarouselProjects";
+import { ContactForm } from "./components/ContactForm";
+import { BlogSection } from "./components/BlogSeccion";
+import Banner from "./components/Banner";
+
+import LogoImpulsaProyectosInmobiliarios from "/src/assets/img/Logo_Impulsa_Proyectos_Inmobiliarios.png";
+import LogoAlianza from "./assets/img/Logo_Alianza.png";
+import LogoBancodeBogota from "./assets/img/Logo_Banco_de_Bogota.png";
+import LogoScotiabank from "./assets/img/Logo_Scotiabank.png";
+import LogoCredicorp from "./assets/img/Logo_Credicorp.svg";
+import iconWaze from "./assets/img/iconWaze.png";
+import iconMaps from "./assets/img/iconMaps.png";
 
 export default function Home() {
+  const [showBanner, setShowBanner] = useState(true);
+
+  const onClose = () => {
+    setShowBanner(false);
+  };
+
+  const oficinaPrincipal = {
+    nameUbication: "Oficina Principal",
+    linkDirection: "https://goo.gl/maps/Txs3cUnbB4SzWqb58",
+    direction: "Calle 98 # 8- 37",
+    city: "Bogotá, Colombia",
+    refPhone: "tel:+576017942134",
+    phone: "(601) 794 2134",
+    textWhatsapp: "WhatsApp: ",
+    refWhatsApp: "https://wa.me/573176676375",
+    whatsapp: "(317) 667 6375",
+    textEmail: "Email: ",
+    refEmail: "mailto:info@impulsacolombia.com.co",
+    email: "info@impulsacolombia.com.co",
+    imageWaze: iconWaze,
+    refWaze:
+      "https://www.waze.com/en/live-map/directions/co/bogota/cl.-98-8-37?place=ChIJDXldaZqaP44RJNHVPhzOm4w",
+    textWaze: "Llega con Waze",
+    imageMaps: iconMaps,
+    refMaps: "https://goo.gl/maps/h9A4sjJeCFWT8QP79",
+    textMaps: "Llega con Maps",
+    iframe: (
+      <Iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.520035040723!2d-74.0428268846926!3d4.679286043144424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a9a695d790d%3A0x8c9bce1c3ed5d124!2sCl.%2098%20%238-37%2C%20Localidad%20de%20Chapinero%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1680636132338!5m2!1ses!2sco"
+        title="Oficina Principal"
+        className="w-full h-full rounded-md"
+        frameBorder="0"
+        loading="lazy"
+        allowFullScreen
+      />
+    ),
+  };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className=" bg-shark-900">
+      {showBanner && <Banner onClose={onClose} />}
+      <div className="max-w-7xl mx-auto pt-32 px-4 xl:px-6">
+        <div className="flex flex-col justify-around items-center">
+          <div className="flex flex-col justify-center items-start w-full">
+            <h1 className="text-4xl md:text-6xl font-bold text-white text-center w-full md:pt-10">
+              IMPULSA EN EL MUNDO
+            </h1>
+            <p className="text-shark-300 text-base md:text-xl font-normal w-full py-5 text-center">
+              Impulsa Colombia forma parte de un grupo Internacional de empresas
+              conformado por un equipo de profesionales que dan vida a la
+              filosofía de la compañía: Máxima Calidad, Profesionalidad,
+              Servicio impecable al cliente y riguroso cumplimiento de los
+              plazos en todas las áreas de trabajo donde participamos.
+            </p>
+            <p className="text-shark-200 text-xl md:text-2xl font-normal w-full py-5 text-center">
+              ¡Esa es nuestra fórmula del éxito!
+            </p>
+            <div className="w-full grid grid-cols-3 gap-6 justify-center items-center mt-10">
+              <div className="col-span-3 md:col-span-1">
+                <h2 className="text-2xl md:4xl font-semibold text-white pb-3 text-center">
+                  Viviendas entregadas en el mundo
+                </h2>
+                <p className="text-xl md:text-3xl font-bold text-center text-amber-400 pb-2">
+                  Más de 18 mil viviendas
+                </p>
+              </div>
+              <div className="col-span-3 md:col-span-1">
+                <h2 className="text-2xl md:4xl font-semibold text-white pb-3 text-center">
+                  Viviendas entregadas en España
+                </h2>
+                <Counter end={17610} />
+              </div>
+              <div className="col-span-3 md:col-span-1">
+                <h2 className="text-2xl md:4xl font-semibold text-white pb-3 text-center">
+                  Viviendas entregadas en Colombia
+                </h2>
+                <Counter end={866} />
+              </div>
+            </div>
+          </div>
+          {/* 
+                    <div className='flex justify-center items-center col-span-1 md:col-span-2'>
+                        <div className=' bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 border border-gray-100 rounded-t-full rounded-b-[73rem] h-[400px] md:h-[800px] object-cover'>
+                            <Image src={Referencia} loading="lazy" className='p-5 rounded-t-full rounded-b-[73rem] h-full object-cover'></Image>
+                        </div>
+                    </div>
+                    */}
+        </div>
+        <div className="mt-12 grid grid-cols-3 sm:grid-cols-5 bg-white rounded-t-md bor py-12">
+          <div className="col-span-5 lg:col-span-1 p-4 grayscale transition duration-200 hover:grayscale-0">
+            <a href="https://impulsaproyectos.com/" target="_blank">
+              <Image
+                src={LogoImpulsaProyectosInmobiliarios}
+                className="h-12 w-auto mx-auto"
+                loading="lazy"
+                alt="Logo Impulsa Proyectos Inmobiliarios"
+                width=""
+                height=""
+              />
+            </a>
+          </div>
+          <div className="col-span-5 lg:col-span-1 p-4 grayscale transition duration-200 hover:grayscale-0">
+            <a href="https://www.alianza.com.co/" target="_blank">
+              <Image
+                src={LogoAlianza}
+                className="h-12 w-auto mx-auto"
+                loading="lazy"
+                alt="Logo Alianza Fiduciaria"
+                width=""
+                height=""
+              />
+            </a>
+          </div>
+          <div className="col-span-5 lg:col-span-1 p-4 grayscale transition duration-200 hover:grayscale-0">
+            <a href="https://www.bancodebogota.com/" target="_blank">
+              <Image
+                src={LogoBancodeBogota}
+                className="h-12 w-auto mx-auto"
+                loading="lazy"
+                alt="Logo Banco de Bogotá"
+                width=""
+                height=""
+              />
+            </a>
+          </div>
+          <div className="col-span-5 lg:col-span-1 p-4 grayscale transition duration-200 hover:grayscale-0">
+            <a href="https://www.scotiabank.com/" target="_blank">
+              <Image
+                src={LogoScotiabank}
+                className="h-12 w-auto m-auto"
+                loading="lazy"
+                alt="Logo Scotiabak Colpatria"
+                width=""
+                height=""
+              />
+            </a>
+          </div>
+          <div className="col-span-5 lg:col-span-1 p-4 grayscale transition duration-200 hover:grayscale-0">
+            <a
+              href="https://www.credicorpcapital.com/Colombia/Paginas/NHome.aspx"
+              target="_blank"
+            >
+              <Image
+                src={LogoCredicorp}
+                className="h-12 w-60 lg:w-auto mx-auto"
+                loading="lazy"
+                alt="Logo Credicorp Fiduciaria"
+                width=""
+                height=""
+              />
+            </a>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+      <div className="pt-28 pb-12 bg-white">
+        <div id="projects" className="max-w-7xl mx-auto px-4 xl:px-6">
+          <div className="flex flex-col">
+            <p className=" text-xl md:text-2xl font-bold text-amber-600">
+              Nuestros{" "}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold text-shark-900 -mt-2 -ml-0.5 mb-12">
+              Proyectos
+            </h1>
+          </div>
+          <CarouselProjects />
+        </div>
+        <div id="blog" className="max-w-7xl mx-auto px-4 xl:px-6 py-12">
+          <p className=" text-xl md:text-2xl font-bold text-amber-600">
+            Sala de{" "}
           </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          <h1 className="text-4xl md:text-5xl font-bold text-shark-900 -mt-2 -ml-0.5 mb-12">
+            Prensa
+          </h1>
+          <BlogSection />
+        </div>
+        <div id="contact" className="max-w-7xl mx-auto px-4 xl:px-6">
+          <p className=" text-xl md:text-2xl font-bold text-amber-600">
+            Hablemos
           </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          <h1 className="text-4xl md:text-5xl font-bold text-shark-900 -mt-2 -ml-0.5 mb-12">
+            Es fácil contactarnos
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ContactForm />
+            <Ubication
+              nameUbication={oficinaPrincipal.nameUbication}
+              linkDirection={oficinaPrincipal.linkDirection}
+              direction={oficinaPrincipal.direction}
+              city={oficinaPrincipal.city}
+              refPhone={oficinaPrincipal.refPhone}
+              phone={oficinaPrincipal.phone}
+              textWhatsapp={oficinaPrincipal.textWhatsapp}
+              refWhatsApp={oficinaPrincipal.refWhatsApp}
+              whatsapp={oficinaPrincipal.whatsapp}
+              refEmail={oficinaPrincipal.refEmail}
+              textEmail={oficinaPrincipal.textEmail}
+              email={oficinaPrincipal.email}
+              iconWaze={oficinaPrincipal.imageWaze}
+              wazeLink={oficinaPrincipal.refWaze}
+              textWaze={oficinaPrincipal.textWaze}
+              iconMaps={oficinaPrincipal.imageMaps}
+              mapsLink={oficinaPrincipal.refMaps}
+              textMaps={oficinaPrincipal.textMaps}
+              iframe={oficinaPrincipal.iframe}
+            />
+          </div>
+        </div>
       </div>
     </main>
-  )
+  );
 }
