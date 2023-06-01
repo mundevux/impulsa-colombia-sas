@@ -6,7 +6,7 @@ const Banner = ({ onClose }) => {
   return (
     <div className="hidden md:block md:fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-white rounded-lg shadow-lg">
-        <Link to="/cerasus-danubio" className="w-full h-full">
+        <Link href="/cerasus-danubio" className="w-full h-full">
           <Image src={bannerDanubio} alt="Banner Cerasus Danubio" />
         </Link>
         <button

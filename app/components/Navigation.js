@@ -7,38 +7,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const options = [
-    {
-      name: "Cerasus Monteblanco",
-      link: "/cerasus-monteblanco",
-    },
-    {
-      name: "Cerasus Danubio",
-      link: "/cerasus-danubio",
-    },
-    {
-      name: "Ceraus Usme",
-      link: "/cerasus-usme",
-    },
-    {
-      name: "Avium Tunja",
-      link: "/avium-tunja",
-    },
-    {
-      name: "Prunus Sexta Entrada",
-      link: "/prunus-sexta-entrada",
-    },
-    {
-      name: "Cerasus Sexta Entrada",
-      link: "/cerasus-sexta-entrada",
-    },
-    {
-      name: "Proyectos en España",
-      link: "https://impulsaproyectos.com/",
-    },
-  ];
-
   return (
     <header>
       <nav className=" z-20 fixed w-screen bg-shark-900 backdrop-blur-2xl">
@@ -113,31 +81,12 @@ export function Navigation() {
                     </Link>
                   </li>
                   <li>
-                    <button
+                    <Link
+                      href="/projects"
                       className="block md:px-4 transition text-base text-white hover:text-amber-500"
-                      onClick={() => setIsOpen(!isOpen)}
                     >
-                      <span className="pr-2">Proyectos</span>
-                      {isOpen ? (
-                        <i className="fa-solid fa-caret-up pr-2"></i>
-                      ) : (
-                        <i className="fa-solid fa-caret-down pr-2"></i>
-                      )}
-                    </button>
-                    {isOpen && (
-                      <div className="relative lg:absolute z-30 bg-shark-900 rounded-lg px-2 py-3">
-                        <ul className="flex flex-col">
-                          {options.map((options, index) => (
-                            <li key={index}>
-                              <ListOfProjects
-                                name={options.name}
-                                link={options.link}
-                              />
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                      <span>Nosotros</span>
+                    </Link>
                   </li>
                   <li>
                     <Link

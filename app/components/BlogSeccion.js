@@ -5,7 +5,7 @@ import Link from "next/link";
 import bannerMiCasaYa from "../assets/Blog/Blog_Mi_Casa_Ya/Subsidio-de-Mi-casa-ya-2022.jpg";
 import bannerConsejos from "../assets/Blog/Consejos_Vivienda_Nueva/consejos-para-comprar-vivienda-nueva.jpg";
 
-export function BlogSection() {
+export default function BlogSection() {
   const blogs = [
     {
       image: bannerMiCasaYa,

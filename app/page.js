@@ -1,19 +1,24 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Iframe from "react-iframe";
 import Ubication from "./components/Ubication";
 import Counter from "./components/Counter";
+
 import { CarouselProjects } from "./components/CarouselProjects";
-import { ContactForm } from "./components/ContactForm";
-import { BlogSection } from "./components/BlogSeccion";
+
+import ContactForm from "./components/ContactForm";
+import BlogSection from "./components/BlogSeccion";
 import Banner from "./components/Banner";
 
-import LogoImpulsaProyectosInmobiliarios from "/src/assets/img/Logo_Impulsa_Proyectos_Inmobiliarios.png";
-import LogoAlianza from "./assets/img/Logo_Alianza.png";
-import LogoBancodeBogota from "./assets/img/Logo_Banco_de_Bogota.png";
-import LogoScotiabank from "./assets/img/Logo_Scotiabank.png";
-import LogoCredicorp from "./assets/img/Logo_Credicorp.svg";
-import iconWaze from "./assets/img/iconWaze.png";
-import iconMaps from "./assets/img/iconMaps.png";
+import LogoImpulsaProyectosInmobiliarios from "./assets/Logo_Impulsa_Proyectos_Inmobiliarios.png";
+import LogoAlianza from "./assets/Logo_Alianza.png";
+import LogoBancodeBogota from "./assets/Logo_Banco_de_Bogota.png";
+import LogoScotiabank from "./assets/Logo_Scotiabank.png";
+import LogoCredicorp from "./assets/Logo_Credicorp.svg";
+import iconWaze from "./assets/iconWaze.png";
+import iconMaps from "./assets/iconMaps.png";
 
 export default function Home() {
   const [showBanner, setShowBanner] = useState(true);
