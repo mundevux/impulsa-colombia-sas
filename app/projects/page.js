@@ -1,5 +1,19 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
+import logoMonteblanco from "/app/assets/Cerasus_Monteblanco/Logo_Cerasus_Monteblanco.png";
+import fachadaMonteblanco from "/app/assets/Cerasus_Monteblanco/Fachada_Cerasus_Monteblanco.jpg";
+import logoDanubio from "/app/assets/Cerasus_Danubio/Logo_Cerasus_Danubio.png";
+import fachadaDanubio from "/app/assets/Cerasus_Danubio/Fachada_Cerasus_Danubio.png";
+import logoUsme from "/app/assets/Cerasus_Usme/Logo_Cerasus_Usme.png";
+import fachadaUsme from "/app/assets/Cerasus_Usme/Fachada_Cerasus_Usme.jpg";
+import logoTunja from "/app/assets/Avium_Tunja/Logo_Avium_Tunja.png";
+import fachadaTunja from "/app/assets/Avium_Tunja/Fachada_Avium_Tunja.jpg";
+import logoCerasusSextaEntrada from "/app/assets/Cerasus_Sexta_Entrada/Logo_Cerasus_Sexta_Entrada.png";
+import fachadaCerasusSextaEntrada from "/app/assets/Cerasus_Sexta_Entrada/Fachada_Cerasus_Sexta_Entrada.png";
+import logoPrunusSextaEntrada from "/app/assets/Prunus_Sexta_Entrada/Logo_Prunus_Sexta_Entrada.png";
+import fachadaPrunusSextaEntrada from "/app/assets/Prunus_Sexta_Entrada/Fachada_Prunus_Sexta_Entrada.png";
+import Link from "next/link";
 
 export default function PageProjects() {
   const projects = [
@@ -7,19 +21,76 @@ export default function PageProjects() {
     // Ejemplo:
     {
       id: 1,
-      name: "Proyecto 1",
+      name: "Cerasus Monteblanco",
       category: "Categoría A",
       city: "Bogotá",
       type: "vis",
+      logo: logoMonteblanco,
+      fachada: fachadaMonteblanco,
+      fachadaAlt: "Fachada Cerasus Monteblanco",
+      logoAlt: "Logo Cerasus Monteblanco",
+      link: "/projects/cerasus-monteblanco",
     },
     {
       id: 2,
-      name: "Proyecto 2",
+      name: "Cerasus Danubio",
+      category: "Categoría B",
+      city: "Bogotá",
+      type: "vis",
+      logo: logoDanubio,
+      fachada: fachadaDanubio,
+      fachadaAlt: "Fachada Cerasus Danubio",
+      logoAlt: "Logo Cerasus Danubio",
+      link: "/projects/cerasus-danubio",
+    },
+    {
+      id: 3,
+      name: "Cerasus Usme",
+      category: "Categoría C",
+      city: "Bogotá",
+      type: "vip",
+      logo: logoUsme,
+      fachada: fachadaUsme,
+      fachadaAlt: "Fachada Cerasus Usme",
+      logoAlt: "Logo Cerasus Usme",
+      link: "/projects/cerasus-usme",
+    },
+    {
+      id: 4,
+      name: "Avium Tunja",
+      category: "Categoría A",
+      city: "Tunja",
+      type: "no vis",
+      logo: logoTunja,
+      fachada: fachadaTunja,
+      fachadaAlt: "Fachada Avium Tunja",
+      logoAlt: "Logo Avium Tunja",
+      link: "/projects/avium-tunja",
+    },
+    {
+      id: 5,
+      name: "Cerasus Sexta Entrada",
       category: "Categoría B",
       city: "Barranquilla",
       type: "vip",
+      logo: logoCerasusSextaEntrada,
+      fachada: fachadaCerasusSextaEntrada,
+      fachadaAlt: "Fachada Cerasus Sexta Entrada",
+      logoAlt: "Logo Cerasus Sexta Entrada",
+      link: "/projects/cerasus-sexta-entrada",
     },
-    // ...
+    {
+      id: 6,
+      name: "Prunus Sexta Entrada",
+      category: "Categoría C",
+      city: "Barranquilla",
+      type: "vis",
+      logo: logoPrunusSextaEntrada,
+      fachada: fachadaPrunusSextaEntrada,
+      fachadaAlt: "Fachada Prunus Sexta Entrada",
+      logoAlt: "Logo Prunus Sexta Entrada",
+      link: "/projects/prunus-sexta-entrada",
+    },
   ];
 
   const [selectedType, setSelectedType] = useState("");
@@ -58,7 +129,7 @@ export default function PageProjects() {
         Proyectos
       </h1>
       <div>
-        <div>
+        <div className=" mb-16">
           {/* Lista desplegable para el tipo de vivienda */}
           <select
             value={selectedType}
@@ -68,6 +139,7 @@ export default function PageProjects() {
             <option value="">Tipo de vivienda</option>
             <option value="vis">VIS</option>
             <option value="vip">VIP</option>
+            <option value="no vis">NO VIS</option>
           </select>
           {/* Lista desplegable para la ciudad */}
           <select
@@ -79,6 +151,7 @@ export default function PageProjects() {
             <option value="Bogotá">Bogotá</option>
             <option value="Tunja">Tunja</option>
             <option value="Barranquilla">Barranquilla</option>
+            <option value="Barranquilla">España</option>
           </select>
           {/* Botón de filtrar */}
           <button
@@ -89,12 +162,45 @@ export default function PageProjects() {
           </button>
         </div>
 
-        <div>
+        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 my-10 place-items-center">
           {/* Aquí se muestran los proyectos filtrados */}
-          {filteredProjects.map((project) => (
-            <div key={project.id}>
-              <h3>{project.name}</h3>
-              <p>{project.category}</p>
+          {filteredProjects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-white shadow-lg rounded-lg overflow-hidden"
+            >
+              <figure className="bg-gray-200 h-40 relative">
+                <Image
+                  src={project.fachada}
+                  loading="lazy"
+                  alt={project.fachadaAlt}
+                  className=" h-full object-cover transition-all transform hover:scale-105 hover:blur-[2px]"
+                />
+                <div className="absolute top-0 left-0 flex flex-col justify-start items-start p-4 text-white">
+                  <span className="text-lg md:text-xl font-semibold">
+                    {project.type.toLocaleUpperCase()}
+                  </span>
+                </div>
+                <div className="absolute bottom-0 right-0 flex flex-col justify-end items-end p-4 text-white">
+                  <span className="text-lg md:text-xl font-semibold">
+                    {project.city}
+                  </span>
+                </div>
+              </figure>
+              <div className="p-4">
+                <div className="flex items-center mb-4">
+                  <Image
+                    src={project.logo}
+                    loading="lazy"
+                    alt={project.logoAlt}
+                    className="h-8 w-8 mr-2"
+                  />
+                  <Link href={project.link} className=" text-xl font-semibold">
+                    {project.name}
+                  </Link>
+                </div>
+                <p></p>
+              </div>
             </div>
           ))}
         </div>

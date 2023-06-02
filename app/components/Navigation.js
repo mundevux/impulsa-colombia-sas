@@ -85,7 +85,7 @@ export function Navigation() {
                       href="/projects"
                       className="block md:px-4 transition text-base text-white hover:text-amber-500"
                     >
-                      <span>Nosotros</span>
+                      <span>Proyectos</span>
                     </Link>
                   </li>
                   <li>
