@@ -14,6 +14,7 @@ import fachadaCerasusSextaEntrada from "/app/assets/Cerasus_Sexta_Entrada/Fachad
 import logoPrunusSextaEntrada from "/app/assets/Prunus_Sexta_Entrada/Logo_Prunus_Sexta_Entrada.png";
 import fachadaPrunusSextaEntrada from "/app/assets/Prunus_Sexta_Entrada/Fachada_Prunus_Sexta_Entrada.png";
 import Link from "next/link";
+import IconParkDanubio from "/app/assets/Cerasus_Danubio/park.svg";
 
 export default function PageProjects() {
   const projects = [
@@ -71,7 +72,7 @@ export default function PageProjects() {
       id: 5,
       name: "Cerasus Sexta Entrada",
       category: "Categoría B",
-      city: "Barranquilla",
+      city: "Malambo",
       type: "vip",
       logo: logoCerasusSextaEntrada,
       fachada: fachadaCerasusSextaEntrada,
@@ -83,7 +84,7 @@ export default function PageProjects() {
       id: 6,
       name: "Prunus Sexta Entrada",
       category: "Categoría C",
-      city: "Barranquilla",
+      city: "Malambo",
       type: "vis",
       logo: logoPrunusSextaEntrada,
       fachada: fachadaPrunusSextaEntrada,
@@ -129,12 +130,12 @@ export default function PageProjects() {
         Proyectos
       </h1>
       <div>
-        <div className=" mb-16">
+        <div className="flex flex-col md:flex-row justify-center mb-16">
           {/* Lista desplegable para el tipo de vivienda */}
           <select
             value={selectedType}
             onChange={handleTypeChange}
-            className=" bg-shark-300 px-4 py-2 rounded-xl text-white ring-0 mr-5"
+            className=" bg-shark-300 w-full md:w-auto px-4 py-2 my-2 rounded-xl text-white ring-0 mr-5"
           >
             <option value="">Tipo de vivienda</option>
             <option value="vis">VIS</option>
@@ -145,18 +146,18 @@ export default function PageProjects() {
           <select
             value={selectedCity}
             onChange={handleCityChange}
-            className=" bg-shark-300 px-4 py-2 rounded-xl text-white ring-0 mr-5"
+            className=" bg-shark-300 w-full md:w-auto px-4 py-2 my-2 rounded-xl text-white ring-0 mr-5"
           >
             <option value="">Ciudad</option>
             <option value="Bogotá">Bogotá</option>
             <option value="Tunja">Tunja</option>
-            <option value="Barranquilla">Barranquilla</option>
-            <option value="Barranquilla">España</option>
+            <option value="Malambo">Malambo</option>
+            <option value="Malambo">España</option>
           </select>
           {/* Botón de filtrar */}
           <button
             onClick={handleFilter}
-            className="bg-amber-500 hover:bg-amber-600 transition text-white text-base font-bold rounded-lg p-2"
+            className="bg-amber-500 hover:bg-amber-600 transition text-white text-base font-bold rounded-lg p-2 my-2"
           >
             Filtrar
           </button>
@@ -176,30 +177,34 @@ export default function PageProjects() {
                   alt={project.fachadaAlt}
                   className=" h-full object-cover transition-all transform hover:scale-105 hover:blur-[2px]"
                 />
-                <div className="absolute top-0 left-0 flex flex-col justify-start items-start p-4 text-white">
-                  <span className="text-lg md:text-xl font-semibold">
+                <div className="absolute top-0 left-0 flex flex-col justify-start items-start m-2 px-4 py-2 text-white bg-amber-500/70 rounded-md">
+                  <span className="text-base md:text-xl font-semibold">
                     {project.type.toLocaleUpperCase()}
                   </span>
                 </div>
-                <div className="absolute bottom-0 right-0 flex flex-col justify-end items-end p-4 text-white">
-                  <span className="text-lg md:text-xl font-semibold">
+                <div className="absolute bottom-0 right-0 flex flex-col justify-end items-end m-2 px-4 py-2 text-white bg-amber-500/70 rounded-md">
+                  <span className="text-base md:text-xl font-semibold">
                     {project.city}
                   </span>
                 </div>
               </figure>
-              <div className="p-4">
-                <div className="flex items-center mb-4">
+              <div className="flex flex-col md:flex-row p-4">
+                <div className="flex justify-center items-center">
                   <Image
                     src={project.logo}
                     loading="lazy"
                     alt={project.logoAlt}
-                    className="h-8 w-8 mr-2"
+                    className="h-20 w-20 md:h-40 md:w-48"
                   />
-                  <Link href={project.link} className=" text-xl font-semibold">
+                </div>
+                <div className="flex flex-col items-center w-full">
+                  <Link
+                    href={project.link}
+                    className="text-base md:text-xl font-semibold"
+                  >
                     {project.name}
                   </Link>
                 </div>
-                <p></p>
               </div>
             </div>
           ))}
