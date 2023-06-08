@@ -1,99 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import logoMonteblanco from "/app/assets/Cerasus_Monteblanco/Logo_Cerasus_Monteblanco.png";
-import fachadaMonteblanco from "/app/assets/Cerasus_Monteblanco/Fachada_Cerasus_Monteblanco.jpg";
-import logoDanubio from "/app/assets/Cerasus_Danubio/Logo_Cerasus_Danubio.png";
-import fachadaDanubio from "/app/assets/Cerasus_Danubio/Fachada_Cerasus_Danubio.png";
-import logoUsme from "/app/assets/Cerasus_Usme/Logo_Cerasus_Usme.png";
-import fachadaUsme from "/app/assets/Cerasus_Usme/Fachada_Cerasus_Usme.jpg";
-import logoTunja from "/app/assets/Avium_Tunja/Logo_Avium_Tunja.png";
-import fachadaTunja from "/app/assets/Avium_Tunja/Fachada_Avium_Tunja.jpg";
-import logoCerasusSextaEntrada from "/app/assets/Cerasus_Sexta_Entrada/Logo_Cerasus_Sexta_Entrada.png";
-import fachadaCerasusSextaEntrada from "/app/assets/Cerasus_Sexta_Entrada/Fachada_Cerasus_Sexta_Entrada.png";
-import logoPrunusSextaEntrada from "/app/assets/Prunus_Sexta_Entrada/Logo_Prunus_Sexta_Entrada.png";
-import fachadaPrunusSextaEntrada from "/app/assets/Prunus_Sexta_Entrada/Fachada_Prunus_Sexta_Entrada.png";
 import Link from "next/link";
-import IconParkDanubio from "/app/assets/Cerasus_Danubio/park.svg";
+import projects from "./dataProjects";
 
 export default function PageProjects() {
-  const projects = [
-    // Aquí deberías tener un arreglo de objetos con información sobre tus proyectos de vivienda
-    // Ejemplo:
-    {
-      id: 1,
-      name: "Cerasus Monteblanco",
-      category: "Categoría A",
-      city: "Bogotá",
-      type: "vis",
-      logo: logoMonteblanco,
-      fachada: fachadaMonteblanco,
-      fachadaAlt: "Fachada Cerasus Monteblanco",
-      logoAlt: "Logo Cerasus Monteblanco",
-      link: "/projects/cerasus-monteblanco",
-    },
-    {
-      id: 2,
-      name: "Cerasus Danubio",
-      category: "Categoría B",
-      city: "Bogotá",
-      type: "vis",
-      logo: logoDanubio,
-      fachada: fachadaDanubio,
-      fachadaAlt: "Fachada Cerasus Danubio",
-      logoAlt: "Logo Cerasus Danubio",
-      link: "/projects/cerasus-danubio",
-    },
-    {
-      id: 3,
-      name: "Cerasus Usme",
-      category: "Categoría C",
-      city: "Bogotá",
-      type: "vip",
-      logo: logoUsme,
-      fachada: fachadaUsme,
-      fachadaAlt: "Fachada Cerasus Usme",
-      logoAlt: "Logo Cerasus Usme",
-      link: "/projects/cerasus-usme",
-    },
-    {
-      id: 4,
-      name: "Avium Tunja",
-      category: "Categoría A",
-      city: "Tunja",
-      type: "no vis",
-      logo: logoTunja,
-      fachada: fachadaTunja,
-      fachadaAlt: "Fachada Avium Tunja",
-      logoAlt: "Logo Avium Tunja",
-      link: "/projects/avium-tunja",
-    },
-    {
-      id: 5,
-      name: "Cerasus Sexta Entrada",
-      category: "Categoría B",
-      city: "Malambo",
-      type: "vip",
-      logo: logoCerasusSextaEntrada,
-      fachada: fachadaCerasusSextaEntrada,
-      fachadaAlt: "Fachada Cerasus Sexta Entrada",
-      logoAlt: "Logo Cerasus Sexta Entrada",
-      link: "/projects/cerasus-sexta-entrada",
-    },
-    {
-      id: 6,
-      name: "Prunus Sexta Entrada",
-      category: "Categoría C",
-      city: "Malambo",
-      type: "vis",
-      logo: logoPrunusSextaEntrada,
-      fachada: fachadaPrunusSextaEntrada,
-      fachadaAlt: "Fachada Prunus Sexta Entrada",
-      logoAlt: "Logo Prunus Sexta Entrada",
-      link: "/projects/prunus-sexta-entrada",
-    },
-  ];
-
   const [selectedType, setSelectedType] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [filteredProjects, setFilteredProjects] = useState(projects); // Variable para almacenar los proyectos filtrados
@@ -135,7 +46,7 @@ export default function PageProjects() {
           <select
             value={selectedType}
             onChange={handleTypeChange}
-            className=" bg-shark-300 w-full md:w-auto px-4 py-2 my-2 rounded-xl text-white ring-0 mr-5"
+            className=" bg-shark-100 w-full md:w-auto px-4 py-2 my-2 rounded-xl font-medium text-shark-500 ring-0 mr-5"
           >
             <option value="">Tipo de vivienda</option>
             <option value="vis">VIS</option>
@@ -146,7 +57,7 @@ export default function PageProjects() {
           <select
             value={selectedCity}
             onChange={handleCityChange}
-            className=" bg-shark-300 w-full md:w-auto px-4 py-2 my-2 rounded-xl text-white ring-0 mr-5"
+            className=" bg-shark-100 w-full md:w-auto px-4 py-2 my-2 rounded-xl font-medium text-shark-500 ring-0 mr-5"
           >
             <option value="">Ciudad</option>
             <option value="Bogotá">Bogotá</option>
@@ -157,7 +68,7 @@ export default function PageProjects() {
           {/* Botón de filtrar */}
           <button
             onClick={handleFilter}
-            className="bg-amber-500 hover:bg-amber-600 transition text-white text-base font-bold rounded-lg p-2 my-2"
+            className="bg-amber-500 text-white text-base font-bold rounded-lg p-2 my-2"
           >
             Filtrar
           </button>
@@ -177,33 +88,58 @@ export default function PageProjects() {
                   alt={project.fachadaAlt}
                   className=" h-full object-cover transition-all transform hover:scale-105 hover:blur-[2px]"
                 />
-                <div className="absolute top-0 left-0 flex flex-col justify-start items-start m-2 px-4 py-2 text-white bg-amber-500/70 rounded-md">
-                  <span className="text-base md:text-xl font-semibold">
+                <div className="absolute top-0 left-0 flex flex-col justify-start items-start m-2 px-3 py-2 text-white bg-shark-400/80 rounded-md">
+                  <span className="text-sm md:text-base font-medium">
                     {project.type.toLocaleUpperCase()}
                   </span>
                 </div>
-                <div className="absolute bottom-0 right-0 flex flex-col justify-end items-end m-2 px-4 py-2 text-white bg-amber-500/70 rounded-md">
-                  <span className="text-base md:text-xl font-semibold">
+                <div className="absolute bottom-0 right-0 flex flex-col justify-end items-end m-2 px-3 py-2 text-white bg-amber-500/70 rounded-md">
+                  <span className="text-sm md:text-base font-medium">
                     {project.city}
                   </span>
                 </div>
               </figure>
-              <div className="flex flex-col md:flex-row p-4">
-                <div className="flex justify-center items-center">
-                  <Image
-                    src={project.logo}
-                    loading="lazy"
-                    alt={project.logoAlt}
-                    className="h-20 w-20 md:h-40 md:w-48"
-                  />
+              <div className="">
+                <div className="flex flex-col md:flex-row p-4">
+                  <div className="flex justify-center items-center">
+                    <Image
+                      src={project.logo}
+                      loading="lazy"
+                      alt={project.logoAlt}
+                      className="h-28 w-28 md:h-40 md:w-40 mx-auto"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-around mx-auto">
+                    <Link
+                      href={project.link}
+                      className="text-base md:text-xl font-semibold underline text-amber-500/90 my-2"
+                    >
+                      {project.name}
+                    </Link>
+                    <p className="text-sm md:text-base font-medium text-shark-500 my-2">
+                      {project.area}
+                    </p>
+                    <p className="text-sm md:text-base font-medium text-shark-500 my-2">
+                      {project.price}
+                      <span className="text-sm">*</span>
+                    </p>
+                    <div className="flex justify-center items-center my-2">
+                      {project.features.map((feature, index) => (
+                        <Image
+                          key={index}
+                          src={feature.icon}
+                          loading="lazy"
+                          alt={index}
+                          className="h-4 w-4 md:h-6 md:w-6 mx-2"
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex flex-col items-center w-full">
-                  <Link
-                    href={project.link}
-                    className="text-base md:text-xl font-semibold"
-                  >
-                    {project.name}
-                  </Link>
+                <div className="w-full text-center pb-1">
+                  <span className="text-[8px] md:text-[10px] font-medium text-shark-500 px-4">
+                    {project.note}
+                  </span>
                 </div>
               </div>
             </div>

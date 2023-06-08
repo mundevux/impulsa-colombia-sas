@@ -50,8 +50,7 @@ export function Navigation() {
                   <Image
                     src={LogoImpulsa}
                     alt="Logo Impulsa Colombia Sas"
-                    className=" h-10 lg:h-12"
-                    height={48}
+                    className=" w-40 md:w-48"
                   ></Image>
                 </div>
               </Link>
