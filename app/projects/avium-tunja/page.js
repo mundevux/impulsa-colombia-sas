@@ -1,9 +1,15 @@
+"use client";
+
 import ContactForm from "@/app/components/ContactForm";
 import Ubication from "@/app/components/Ubication";
+import projects from "/app/projects/dataProjects";
 import Iframe from "react-iframe";
+import { Carousel } from "flowbite-react";
+import { Tooltip } from "flowbite-react";
 import iconWaze from "/app/assets/iconWaze.png";
 import iconMaps from "/app/assets/iconMaps.png";
 import Image from "next/image";
+import Head from "next/head";
 import logoTunja from "/app/assets/Avium_Tunja/Logo_Avium_Tunja.png";
 import fachadaTunja from "/app/assets/Avium_Tunja/Fachada_Avium_Tunja.jpg";
 import cocina from "/app/assets/Avium_Tunja/apartamentos-en-tunja-COCINA.jpg";
@@ -18,6 +24,18 @@ import alcobaTipoD from "/app/assets/Avium_Tunja/apartamentos-en-tunja-TIPO-D-AL
 import aptoTipoA from "/app/assets/Avium_Tunja/apto-tipo-A-55mt-tunja.jpg";
 import aptoTipoB from "/app/assets/Avium_Tunja/apto-tipo-B-54mt-tunja.jpg";
 import aptoTipoC from "/app/assets/Avium_Tunja/apto-tipo-C-47mt-tunja.jpg";
+
+export const metadata = {
+  title: "Avium Tunja | Proyectos Inmobiliarios",
+  description:
+    "Avium Tunja es un proyecto de vivienda de interés social ubicado en la ciudad de Tunja, Boyacá. Conoce más sobre este proyecto de Impulsa Colombia.",
+  keywords:
+    "Avium Tunja, Proyectos Inmobiliarios, Vivienda de interés social, Vivienda de interés prioritario, Edificios residenciales en Colombia, Proyectos de vivienda en Colombia",
+  index: "index, follow",
+  ogTitle: "Avium Tunja | Proyectos Inmobiliarios",
+  ogDescription:
+    "Avium Tunja es un proyecto de vivienda de interés social ubicado en la ciudad de Tunja, Boyacá. Conoce más sobre este proyecto de Impulsa Colombia.",
+};
 
 export default function AviumTunja() {
   const salaDeVentas = {
@@ -51,6 +69,50 @@ export default function AviumTunja() {
       />
     ),
   };
+
+  const imageProject = [
+    {
+      src: fachadaTunja,
+      alt: "Fachada Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: piscina,
+      alt: "Piscina del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: gimnasio,
+      alt: "Gimansio del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: alcoba1,
+      alt: "Render Urbanismo del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: alcoba2,
+      alt: "Render Apartamento del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: alcobaTipoD,
+      alt: "Render Urbanismo del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: cocina,
+      alt: "Render Apartamento del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: comedor,
+      alt: "Render Apartamento del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: cocinaTipoB,
+      alt: "Render Urbanismo del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+    {
+      src: salaTipoB,
+      alt: "Render Apartamento del Conjunto Residencial Avium Tunja, apartamentos con piscina en Tunja",
+    },
+  ];
+
   return (
     <div className="max-w-7xl mx-auto py-10 px-4 xl:px-6">
       <Image
@@ -79,11 +141,11 @@ export default function AviumTunja() {
           <ul className="flex justify-around md:justify-center my-3">
             <li className="text-sm md:text-lg font-medium text-shark-700 mx-2">
               <span className="text-amber-500 pr-2">•</span>
-              Área de 47m2
+              Área de 45 m2
             </li>
             <li className="text-sm md:text-lg font-medium text-shark-700 mx-2">
               <span className="text-amber-500 pr-2">•</span>
-              Hasta 170 SMMLV
+              Desde $ 200.000.000
             </li>
           </ul>
         </div>
@@ -106,7 +168,7 @@ export default function AviumTunja() {
           </p>
         </div>
         <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 shadow-lg">
-          {/*<Carousel>
+          <Carousel>
             {imageProject.map((image, index) => (
               <Image
                 key={index}
@@ -115,23 +177,40 @@ export default function AviumTunja() {
                 className="w-full h-full object-cover rounded-lg shadow"
               />
             ))}
-          </Carousel>*/}
+          </Carousel>
         </div>
       </div>
 
-      <h2 className=" text-2xl md:text-4xl font-bold text-amber-400 pt-4 text-center">
+      <h2 className=" text-2xl md:text-4xl font-bold text-amber-500 pt-4 text-center">
         Características
       </h2>
-      <div className="flex flex-auto flex-wrap items-center justify-around w-full pb-5 px-6">
-        {/*features.map((feature, index) => (
-          <div key={index}>
-            <PropertiesOfProjects
-              image={feature.image}
-              imageAlt={feature.imageAlt}
-              name={feature.name}
-            />
+      <div>
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="flex flex-auto flex-wrap items-center justify-center w-full pb-5 px-6"
+          >
+            {project.name === "Avium Tunja"
+              ? project.features.map((feature, index) => (
+                  <div key={index}>
+                    <Tooltip
+                      title={feature.name}
+                      placement="top"
+                      content={feature.name}
+                    >
+                      <Image
+                        key={index}
+                        src={feature.icon}
+                        loading="lazy"
+                        alt={index}
+                        className="h-8 w-8 md:h-12 md:w-12 mx-8"
+                      />
+                    </Tooltip>
+                  </div>
+                ))
+              : null}
           </div>
-        ))*/}
+        ))}
       </div>
 
       <div>
@@ -149,7 +228,7 @@ export default function AviumTunja() {
             <h2 className="text-xl md:text-2xl font-bold text-amber-500 mb-4">
               Apartamentos Tipo A
             </h2>
-            <p className="text-lg md:text-xl font-bold text-shark-900 text-center">
+            <p className="text-sm md:text-base font-medium text-shark-900 text-center">
               Apatamentos de 55m2 con 3 Habitaciones, 2 baños, sala comedor,
               cocina, zona de ropas y parqueadero
             </p>
@@ -163,7 +242,7 @@ export default function AviumTunja() {
             <h2 className="text-xl md:text-2xl font-bold text-amber-500 mb-4">
               Apartamentos Tipo B
             </h2>
-            <p className="text-lg md:text-xl font-bold text-shark-900 text-center">
+            <p className="text-sm md:text-base font-medium text-shark-900 text-center">
               Apatamentos de 54m2 con 3 Habitaciones, 2 baños, sala comedor,
               cocina, zona de ropas y parqueadero
             </p>
@@ -177,7 +256,7 @@ export default function AviumTunja() {
             <h2 className="text-xl md:text-2xl font-bold text-amber-500 mb-4">
               Apartamentos Tipo C
             </h2>
-            <p className="text-lg md:text-xl font-bold text-shark-900 text-center">
+            <p className="text-sm md:text-base font-medium text-shark-900 text-center">
               Apatamentos de 47m2 con 2 Habitaciones, 2 baños, sala comedor,
               cocina, zona de ropas y parqueadero
             </p>

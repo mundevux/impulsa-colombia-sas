@@ -2,6 +2,8 @@ import { Footer } from "./components/Footer";
 import { Navigation } from "./components/Navigation";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Head from "next/head";
+import iconImpulsa from "/app/assets/favicon_Impulsa_Colombia.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,6 +15,7 @@ export const metadata = {
     "Impulsa Colombia, Proyectos Inmobiliarios, Vivienda de interés social, Vivienda de interés prioritario, Edificios residenciales en Colombia, Proyectos de vivienda en Colombia",
   index: "index, follow",
   ogTitle: "Impulsa Colombia | Proyectos Inmobiliarios",
+  icon: iconImpulsa,
   ogDescription:
     "Impulsa Colombia es una empresa de proyectos inmobiliarios que ofrece vivienda de interés social y vivienda de interés prioritario en Colombia, ofreciendo calidad y seguridad a nuestros clientes.",
 };

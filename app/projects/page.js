@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-import projects from "./dataProjects";
+import projects from "/app/projects/dataProjects";
 
 export default function PageProjects() {
   const [selectedType, setSelectedType] = useState("");
