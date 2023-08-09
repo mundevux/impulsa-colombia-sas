@@ -17,11 +17,6 @@ import iconWaze from "/app/assets/iconWaze.png";
 import iconMaps from "/app/assets/iconMaps.png";
 import Image from "next/image";
 
-export const metadata = {
-  title: "Cerasus Monteblanco",
-  description: "Apartamentos en venta en Bogotá",
-};
-
 export default function CerasusMonteblanco() {
   const salaDeVentas = {
     nameUbication: "Sala de Ventas Cerasus Monteblanco",
