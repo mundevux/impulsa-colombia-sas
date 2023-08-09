@@ -9,7 +9,6 @@ import { Tooltip } from "flowbite-react";
 import iconWaze from "/app/assets/iconWaze.png";
 import iconMaps from "/app/assets/iconMaps.png";
 import Image from "next/image";
-import Head from "next/head";
 import logoTunja from "/app/assets/Avium_Tunja/Logo_Avium_Tunja.png";
 import fachadaTunja from "/app/assets/Avium_Tunja/Fachada_Avium_Tunja.jpg";
 import cocina from "/app/assets/Avium_Tunja/apartamentos-en-tunja-COCINA.jpg";
@@ -24,6 +23,7 @@ import alcobaTipoD from "/app/assets/Avium_Tunja/apartamentos-en-tunja-TIPO-D-AL
 import aptoTipoA from "/app/assets/Avium_Tunja/apto-tipo-A-55mt-tunja.jpg";
 import aptoTipoB from "/app/assets/Avium_Tunja/apto-tipo-B-54mt-tunja.jpg";
 import aptoTipoC from "/app/assets/Avium_Tunja/apto-tipo-C-47mt-tunja.jpg";
+import Head from "next/head";
 
 export const metadata = {
   title: "Avium Tunja | Proyectos Inmobiliarios",
@@ -32,9 +32,6 @@ export const metadata = {
   keywords:
     "Avium Tunja, Proyectos Inmobiliarios, Vivienda de interés social, Vivienda de interés prioritario, Edificios residenciales en Colombia, Proyectos de vivienda en Colombia",
   index: "index, follow",
-  ogTitle: "Avium Tunja | Proyectos Inmobiliarios",
-  ogDescription:
-    "Avium Tunja es un proyecto de vivienda de interés social ubicado en la ciudad de Tunja, Boyacá. Conoce más sobre este proyecto de Impulsa Colombia.",
 };
 
 export default function AviumTunja() {
@@ -60,7 +57,7 @@ export default function AviumTunja() {
     textMaps: "Llega con Maps",
     iframe: (
       <Iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1988.6425980615309!2d-74.11951147924401!3d4.542599976786291!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3fa2047bf585eb%3A0x52f958ff789b6660!2scerasus%20danubio!5e0!3m2!1ses!2sco!4v1680648024910!5m2!1ses!2sco"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31770.02056858793!2d-73.355984!3d5.5295!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7d614bfa4065%3A0xaff8cb7016e98b1a!2sConjunto%20Residencial%20Avium%20Tunja!5e0!3m2!1ses!2sco!4v1691603509305!5m2!1ses!2sco"
         title="Sala de Ventas Avium Tunja"
         className="w-full h-full rounded-md"
         frameBorder="0"
@@ -115,6 +112,9 @@ export default function AviumTunja() {
 
   return (
     <div className="max-w-7xl mx-auto py-10 px-4 xl:px-6">
+      <Head>
+        <title>Avium Tunja - Apartamentos con piscina en Tunja</title>
+      </Head>
       <Image
         src={fachadaTunja}
         alt="Fachada Conjunto Residencial Avium Tunja apartamentos con piscina en Tunja"
@@ -132,20 +132,24 @@ export default function AviumTunja() {
           Avium Tunja
         </h1>
         <p className="text-lg md:text-xl font-medium text-shark-700">
-          Apartamentos en venta en Tunja con piscina
+          Apartamentos en venta en Tunja, Boyacá.
         </p>
         <p className="text-lg md:text-xl font-medium text-shark-700">
-          Proyecto de vivienda en Tunja
+          Vive con todas las comodidades sin salir de casa.
         </p>
         <div className="w-full">
-          <ul className="flex justify-around md:justify-center my-3">
-            <li className="text-sm md:text-lg font-medium text-shark-700 mx-2">
+          <ul className="flex flex-wrap justify-around md:justify-center my-3">
+            <li className="text-sm md:text-lg font-medium text-shark-700 mx-2 my-1">
               <span className="text-amber-500 pr-2">•</span>
-              Área de 45 m2
+              {projects[3].area}
             </li>
-            <li className="text-sm md:text-lg font-medium text-shark-700 mx-2">
+            <li className="text-sm md:text-lg font-medium text-shark-700 mx-2 my-1">
               <span className="text-amber-500 pr-2">•</span>
-              Desde $ 200.000.000
+              {projects[3].price}
+            </li>
+            <li className="text-sm md:text-lg font-medium text-shark-700 mx-2 my-1">
+              <span className="text-amber-500 pr-2">•</span>
+              {projects[3].descriptionType}
             </li>
           </ul>
         </div>
@@ -188,7 +192,7 @@ export default function AviumTunja() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="flex flex-auto flex-wrap items-center justify-center w-full pb-5 px-6"
+            className="flex flex-auto flex-wrap items-center justify-center w-full pb-2 md:pb-3 px-6"
           >
             {project.name === "Avium Tunja"
               ? project.features.map((feature, index) => (
@@ -203,7 +207,7 @@ export default function AviumTunja() {
                         src={feature.icon}
                         loading="lazy"
                         alt={index}
-                        className="h-8 w-8 md:h-12 md:w-12 mx-8"
+                        className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 mx-8 my-4"
                       />
                     </Tooltip>
                   </div>
