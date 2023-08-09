@@ -23,16 +23,6 @@ import alcobaTipoD from "/app/assets/Avium_Tunja/apartamentos-en-tunja-TIPO-D-AL
 import aptoTipoA from "/app/assets/Avium_Tunja/apto-tipo-A-55mt-tunja.jpg";
 import aptoTipoB from "/app/assets/Avium_Tunja/apto-tipo-B-54mt-tunja.jpg";
 import aptoTipoC from "/app/assets/Avium_Tunja/apto-tipo-C-47mt-tunja.jpg";
-import Head from "next/head";
-
-export const metadata = {
-  title: "Avium Tunja | Proyectos Inmobiliarios",
-  description:
-    "Avium Tunja es un proyecto de vivienda de interés social ubicado en la ciudad de Tunja, Boyacá. Conoce más sobre este proyecto de Impulsa Colombia.",
-  keywords:
-    "Avium Tunja, Proyectos Inmobiliarios, Vivienda de interés social, Vivienda de interés prioritario, Edificios residenciales en Colombia, Proyectos de vivienda en Colombia",
-  index: "index, follow",
-};
 
 export default function AviumTunja() {
   const salaDeVentas = {
@@ -112,9 +102,6 @@ export default function AviumTunja() {
 
   return (
     <div className="max-w-7xl mx-auto py-10 px-4 xl:px-6">
-      <Head>
-        <title>Avium Tunja - Apartamentos con piscina en Tunja</title>
-      </Head>
       <Image
         src={fachadaTunja}
         alt="Fachada Conjunto Residencial Avium Tunja apartamentos con piscina en Tunja"
