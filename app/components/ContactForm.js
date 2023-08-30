@@ -1,6 +1,6 @@
 "use client";
-
 import { useState } from "react";
+import Recaptcha from "react-google-recaptcha";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -11,6 +11,12 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Verifica si se ha completado reCAPTCHA
+    if (!recaptchaValue) {
+      alert("Por favor, complete el reCAPTCHA.");
+      return;
+    }
 
     const data = {
       name: name,
@@ -25,13 +31,22 @@ export default function ContactForm() {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(() => {
-      setName("");
-      setEmail("");
-      setTel("");
-      setProject("");
-      setShowConfirmation(true);
-    });
+    })
+      .then(() => {
+        setName("");
+        setEmail("");
+        setTel("");
+        setProject("");
+        setShowConfirmation(true);
+      })
+      .catch((error) => {
+        console.error("Error al enviar los datos:", error);
+      });
+  };
+
+  // Función para manejar cambios en la respuesta de reCAPTCHA
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
   };
 
   return (
@@ -121,6 +136,14 @@ export default function ContactForm() {
             <option>Cerasus Sexta Entrada</option>
           </select>
         </div>
+
+        {/* Agrega el componente reCAPTCHA */}
+        <Recaptcha
+          className="my-4"
+          sitekey="6LccdugnAAAAACncASXfMNXkKYaFZm8Ly1f0U8cu"
+          onChange={handleRecaptchaChange}
+        />
+
         <div className="flex items-center justify-center">
           <button
             type="submit"
